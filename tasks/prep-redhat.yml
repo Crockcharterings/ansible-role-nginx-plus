@@ -1,0 +1,7 @@
+---
+- name: "(CentOS/RedHat) Install NGINX Plus Package Dependencies"
+  yum:
+    name: "{{item}}"
+  with_items:
+    - ca-certificates
+    - libselinux-python

@@ -1,0 +1,31 @@
+---
+- include: prep-debian.yml
+  when: ansible_os_family == "Debian"
+
+- include: prep-redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: "(All OS) Create SSL directory"
+  file:
+    path: /etc/ssl/nginx
+    state: directory
+
+- name: "(All OS) Move Certs"
+  copy:
+    src: "{{certs}}"
+    dest: /etc/ssl/nginx
+
+- include: pkg-debian.yml
+  when: ansible_os_family == "Debian"
+
+- include: pkg-redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- include: pkg-suse.yml
+  when: ansible_os_family == "Suse"
+
+- name: "(All OS) Install NGINX Plus"
+  package:
+    name: nginx-plus
+    state: latest
+  notify: "(All OS) Start Nginx"

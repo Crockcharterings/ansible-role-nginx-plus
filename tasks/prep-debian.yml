@@ -1,0 +1,9 @@
+---
+- name: "(Debian/Ubuntu) Install NGINX Plus Package Dependencies"
+  apt:
+    name: "{{item}}"
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - lsb-release

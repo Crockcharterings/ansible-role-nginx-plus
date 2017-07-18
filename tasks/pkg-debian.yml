@@ -1,0 +1,16 @@
+---
+- name: "(Debian/Ubuntu) Add NGINX Signing Key"
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+
+- name: "(Debian/Ubuntu) Add NGINX Plus Repository"
+  shell: printf "deb https://plus-pkgs.nginx.com/{{ansible_distribution|lower}} `lsb_release -cs` nginx-plus\n" | sudo tee /etc/apt/sources.list.d/nginx-plus.list
+
+- name: "(Debian/Ubuntu) Download 90nginx File"
+  get_url:
+    url: https://cs.nginx.com/static/files/90nginx
+    dest: /etc/apt/apt.conf.d/90nginx
+
+- name: "(Debian/Ubuntu) Update Apt Cache"
+  apt:
+    update_cache: yes
