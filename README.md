@@ -1,6 +1,8 @@
 Ansible NGINX Plus Role
 =======================
 
+[![Build Status](https://travis-ci.org/nginxinc/ansible-role-nginx-plus.svg?branch=master)](https://travis-ci.org/nginxinc/ansible-role-nginx-plus)
+
 This role installs NGINX Plus on your target host. It supports most CentOS/RHEL/Debian/Ubuntu/SLES distributions.
 
 Requirements
