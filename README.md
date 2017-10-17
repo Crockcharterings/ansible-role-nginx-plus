@@ -1,6 +1,7 @@
 Ansible NGINX Plus Role
 =======================
 
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-nginxinc.nginx--plus-5bbdbf.svg)](https://galaxy.ansible.com/nginxinc/nginx-plus)
 [![Build Status](https://travis-ci.org/nginxinc/ansible-role-nginx-plus.svg?branch=master)](https://travis-ci.org/nginxinc/ansible-role-nginx-plus)
 
 This role installs NGINX Plus on your target host. It supports most CentOS/RHEL/Debian/Ubuntu/SLES distributions.
@@ -8,7 +9,9 @@ This role installs NGINX Plus on your target host. It supports most CentOS/RHEL/
 Requirements
 ------------
 
-This role was developed using Ansible 2.3.1.0 and as such might not work if a previous version of Ansible is employed.
+This role was developed using Ansible 2.3.1.0. Backwards compatibility is not guaranteed.
+
+Use `ansible-galaxy install nginxinc.nginx-plus` to install the role on your system.
 
 The following platforms have been tested and are oficially supported:
 
@@ -22,21 +25,24 @@ The following platforms have been tested and are oficially supported:
         - 7
     Debian:
       versions:
-      - jessie
-      - stretch
+        - jessie
+        - stretch
     Ubuntu:
       versions:
-      - trusty
-      - xenial
-      - yakkety
+        - trusty
+        - xenial
+        - zesty
     SUSE/SLES:
       versions:
         - 12
+        - 12SP1
 
 Role Variables
 --------------
 
-This role has one variable, `certs`, that describes the folder location of the `nginx-repo.crt` and `nginx-repo.key` you received with your NGINX Plus license. By default the role will try to find the folder at `~/certs/`. Your `certs` folder can be located in your local machine if you are deploying to a dynamic inventory or on your target host if you are deploying a simple instance.
+This role has one variable, `certs`. `certs` points to the folder location of the `nginx-repo.crt` and `nginx-repo.key` you received with your NGINX Plus license.
+
+By default the role will try to find the folder at `~/certs/`.
 
 Dependencies
 ------------
@@ -46,36 +52,39 @@ None
 Example Playbook
 ----------------
 
-This is a sample playbook file for deploying NGINX Plus from within an online cloud provider.
+This is a sample playbook file for deploying the Ansible Galaxy NGINX Plus role in a localhost.
 
     ---
     - hosts: localhost
-      remote_user: root
       become: true
       roles:
-        - role: ansible-nginx-plus
+        - role: nginxinc.nginx-plus
       vars:
         - certs: ~/certs/
 
-This is a sample playbook file for deploying NGINX Plus to a dynamic inventory containing the `nginx` tag.
+This is a sample playbook file for deploying the Ansible Galaxy NGINX OSS role to a dynamic inventory containing the `nginx` tag.
 
     ---
     - hosts: tag_nginx
       remote_user: root
       become: true
       roles:
-        - role: ansible-nginx-plus
+        - role: nginxinc.nginx-plus
       vars:
         - certs: ~/certs/
+
+To run any of the above sample playbooks create a `setup-nginx.yml` file and paste the contents. Executing the Ansible Playbook is then as simple as executing `ansible-playbook ./setup-nginx.yml`.
+
+Alternatively, you can also clone this repository instead of installing it from Ansible Galaxy. If you decide to do so, replace the role variable in the previous sample playbooks from `nginxinc.nginx-plus` to `ansible-role-nginx-plus`.
 
 License
 -------
 
-Simplified BSD License
+[Simplified BSD License](https://github.com/nginxinc/ansible-role-nginx-plus/blob/master/LICENSE)
 
 Author Information
 ------------------
 
 Alessandro Fael Garcia
 
-**NGINX Inc**
+[NGINX Inc](https://www.nginx.com/)
