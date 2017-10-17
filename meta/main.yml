@@ -145,8 +145,8 @@ galaxy_info:
   #  - vivid
   #  - wily
       - xenial
-      - yakkety
-  #  - zesty
+  # - yakkety
+      - zesty
   - name: Debian
     versions:
   #  - all
