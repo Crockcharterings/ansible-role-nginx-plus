@@ -42,7 +42,7 @@ Role Variables
 
 This role has one variable, `certs`. `certs` points to the folder location of the `nginx-repo.crt` and `nginx-repo.key` you received with your NGINX Plus license.
 
-By default the role will try to find the folder at `~/certs/`.
+By default the role will try to find the folder at `~/.ssh/ngx-certs/`.
 
 Dependencies
 ------------
@@ -60,7 +60,7 @@ This is a sample playbook file for deploying the Ansible Galaxy NGINX Plus role 
       roles:
         - role: nginxinc.nginx-plus
       vars:
-        - certs: ~/certs/
+        - certs: ~/.ssh/ngx-certs/
 
 This is a sample playbook file for deploying the Ansible Galaxy NGINX OSS role to a dynamic inventory containing the `nginx` tag.
 
@@ -71,7 +71,7 @@ This is a sample playbook file for deploying the Ansible Galaxy NGINX OSS role t
       roles:
         - role: nginxinc.nginx-plus
       vars:
-        - certs: ~/certs/
+        - certs: ~/.ssh/ngx-certs/
 
 To run any of the above sample playbooks create a `setup-nginx.yml` file and paste the contents. Executing the Ansible Playbook is then as simple as executing `ansible-playbook ./setup-nginx.yml`.
 
